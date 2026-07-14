@@ -1,37 +1,3 @@
-# E-commerce Sales Analysis
-
-Analysis of ~5,000 e-commerce orders (2024–2025) to uncover revenue trends, top-performing categories/regions, customer behavior, and return patterns — built using **Python (Pandas)** for cleaning/analysis and **SQL** for business-question queries.
-
-## Problem Statement
-
-An online retailer wants to understand:
-- Where revenue is coming from (categories, regions, customers)
-- Whether sales are growing month-over-month
-- Which products get returned most, and why that might matter
-- How discounts affect purchase quantity
-
-This project answers those questions end-to-end: raw data → cleaning → analysis → SQL insights → visualizations.
-
-## Tech Stack
-
-- **Python**: pandas, matplotlib
-- **SQL**: SQLite (queries are portable to PostgreSQL/MySQL with minor tweaks)
-- **Data**: synthetic dataset modeled on realistic e-commerce order data (intentionally includes missing values, inconsistent text casing, and duplicates to demonstrate data cleaning)
-
-## Project Structure
-
-```
-ecommerce-sales-analysis/
-├── data/
-│   ├── orders.csv           # raw data (with intentional data quality issues)
-│   └── orders_clean.csv     # cleaned data (output of analysis.py)
-├── sql/
-│   └── schema_and_queries.sql   # table schema + 10 business-question queries
-├── images/                  # generated charts
-├── analysis.py              # cleaning + analysis + chart generation
-└── README.md
-```
-
 ## How to Run
 
 ```bash
@@ -82,6 +48,23 @@ Revenue shows a seasonal spike around October–November, consistent with festiv
 ### Payment Method Popularity
 ![Payment Method Popularity](images/payment_method_popularity.png)
 
+## Interactive Power BI Dashboard
+
+Built an interactive Power BI dashboard on top of `orders_clean.csv`, with a region slicer that filters all visuals simultaneously.
+
+![Power BI Dashboard](dashboard_screenshot.png)
+
+**Included visuals:**
+- KPI cards: Total Revenue, Total Orders, Avg Order Value, Return Rate %
+- Revenue by Category (bar chart)
+- Monthly Revenue Trend (Jan 2024 – Dec 2025, line chart)
+- Revenue by Region (column chart)
+- Order Status Breakdown (donut chart)
+- Payment Method Popularity (bar chart)
+- Region slicer for interactive filtering across all visuals
+
+The `.pbix` file (`ecommerce_dashboard.pbix`) is included in this repo — open it in Power BI Desktop to explore the dashboard interactively.
+
 ## SQL Highlights
 
 The `sql/schema_and_queries.sql` file includes 10 business questions, ranging from simple aggregations to window functions:
@@ -94,7 +77,6 @@ The `sql/schema_and_queries.sql` file includes 10 business questions, ranging fr
 
 ## Possible Next Steps
 
-- Build an interactive Power BI / Tableau dashboard on top of `orders_clean.csv`
 - Add a customer segmentation model (RFM analysis)
 - Forecast next quarter's revenue using time series methods
 
